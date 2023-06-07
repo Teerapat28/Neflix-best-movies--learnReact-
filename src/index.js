@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {movies} from './movies'
+import Movie from './movie';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const MovieList = () => {
+    return ( <>
+    <h1>Netflix best movies</h1>
+    <section className='movielist'>
+        {movies.map((movie, index) => {
+            return <Movie {...movie} number={index}
+            key={movie.id} />;
+        })}
+    </section>
+    </>
+    )
+}
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+root.render(<MovieList />)
